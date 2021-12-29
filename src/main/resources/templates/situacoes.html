@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+	<div class="situacoesBox" layout:fragment="content">
+		<div class="title">SITUAÇÕES</div>
+		
+		<div class="msgSucess" th:if="${msgSucess} != null">
+			<span th:text="${msgSucess}"></span>
+		</div>
+		
+		<div class="msgError" th:if="${msgError} != null">
+			<span th:text="${msgError}"></span>
+		</div>
+		
+		<div class="situacaoCadastro">
+			<form name="situacaoCadForm" method="POST" th:object="${situacaoCad}" th:action="@{/} + ${roleName} + '/situacoes/save'" >
+				<label>
+					<span>Nome:</span>
+					<input type="text" name="nome" th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('nome')}">
+						<strong th:errors="*{nome}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Índice (ordem):</span>
+					<input type="number" name="indice-ordem" onkeydown="return isNumberInteger(event)" th:field="*{indice}" th:classappend="${#fields.hasErrors('indice')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('indice')}">
+						<strong th:errors="*{indice}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Cor:</span>
+					<input type="color" name="cor" th:field="*{cor}" th:classappend="${#fields.hasErrors('cor')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('cor')}">
+						<strong th:errors="*{cor}"></strong>
+					</span>
+				</label>
+				
+				<input type="submit" value="Cadastrar" />
+			</form>
+		</div>
+		
+		<form name="situacaoDelForm" method="POST" th:action="@{/} + ${roleName} + '/situacoes/delete'" style="display: none;">
+			<input name="id-situacao-del" type="number" value="" />
+		</form>
+		
+		<div class="situacoesConsAlter">
+			<div class="div-table">
+				<table>
+					<tr>
+						<th>Cód.</th>
+						<th>Nome</th>
+						<th>Índice</th>
+						<th>Cor</th>
+						<th></th>
+					</tr>
+
+					<tr th:each="situacao : ${situacoes}">
+						<td th:text="${situacao.id}"></td>
+						<td th:text="${situacao.nome}"></td>
+						<td th:text="${situacao.indice}"></td>
+						<td th:text="${situacao.cor}"></td>
+						<td> <img th:src="@{/icons/icon-trash.png}"> </td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="div-alter">
+				<form name="situacaoEdForm" method="POST" th:object="${situacaoEd}" th:action="@{/} + ${roleName} + '/situacoes/edit'">
+					<label>
+						<span>Código:</span>
+						<input type="number" name="id" th:field="*{id}" disabled />
+					</label>
+					
+					<label>
+						<span>Nome:</span>
+						<input type="text" name="nome" th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" disabled />
+						<span class="msgError" th:if="${#fields.hasErrors('nome')}">
+							<strong th:errors="*{nome}"></strong>
+						</span>
+					</label>
+					
+					<label>
+						<span>Índice (ordem):</span>
+						<input type="number" name="indice-ordem" onkeydown="return isNumberInteger(event)" th:field="*{indice}" th:classappend="${#fields.hasErrors('indice')} ? 'inputError' : ''" disabled />
+						<span class="msgError" th:if="${#fields.hasErrors('indice')}">
+							<strong th:errors="*{indice}"></strong>
+						</span>
+					</label>
+					
+					<label>
+						<span>Cor:</span>
+						<input type="color" name="cor" th:field="*{cor}" th:classappend="${#fields.hasErrors('cor')} ? 'inputError' : ''" disabled />
+						<span class="msgError" th:if="${#fields.hasErrors('cor')}">
+							<strong th:errors="*{cor}"></strong>
+						</span>
+					</label>
+					
+					<input type="reset" value="Cancelar" disabled />
+					<input type="submit" value="Alterar" disabled />
+				</form>
+			</div>
+		</div>
+		
+		<div class="confirmDeleteSituacaoModal">
+			<div class="content-modal">
+				<div class="title-modal">Deletar Situação</div>
+				<div class="text-modal">Deseja realmente deletar a situação "#sit#"?</div>
+				
+				<div class="btns">
+			    	<button type="button" class="cancelbtn">Cancelar</button>
+			    	<button type="button" class="confirmbtn">Deletar</button>
+				</div>
+				
+				<span class="idSituacao" style="display: none;"></span>
+				<span class="nomeSituacao" style="display: none;"></span>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

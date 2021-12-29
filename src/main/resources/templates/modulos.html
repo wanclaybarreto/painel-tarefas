@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+	<div class="modulosBox" layout:fragment="content">
+		<div class="title">MÓDULOS</div>
+		
+		<div class="msgSucess" th:if="${msgSucess} != null">
+			<span th:text="${msgSucess}"></span>
+		</div>
+		
+		<div class="msgError" th:if="${msgError} != null">
+			<span th:text="${msgError}"></span>
+		</div>
+		
+		<div class="moduloCadastro">
+			<form name="moduloCadForm" method="POST" th:object="${moduloCad}" th:action="@{/} + ${roleName} + '/modulos/save'" >
+				<label>
+					<span>Nome:</span>
+					<input type="text" name="nome" th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('nome')}">
+						<strong th:errors="*{nome}"></strong>
+					</span>
+				</label>
+				
+				<input type="submit" value="Cadastrar" />
+			</form>
+		</div>
+		
+		<form name="moduloDelForm" method="POST" th:action="@{/} + ${roleName} + '/modulos/delete'" style="display: none;">
+			<input name="id-modulo-del" type="number" value="" />
+		</form>
+		
+		<div class="modulosConsAlter">
+			<div class="div-table">
+				<table>
+					<tr>
+						<th>Cód.</th>
+						<th>Nome</th>
+						<th></th>
+					</tr>
+
+					<tr th:each="modulo : ${modulos}">
+						<td th:text="${modulo.id}"></td>
+						<td th:text="${modulo.nome}"></td>
+						<td> <img th:src="@{/icons/icon-trash.png}"> </td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="div-alter">
+				<form name="moduloEdForm" method="POST" th:object="${moduloEd}" th:action="@{/} + ${roleName} + '/modulos/edit'">
+					<label>
+						<span>Código:</span>
+						<input type="number" name="id" th:field="*{id}" disabled />
+					</label>
+					
+					<label>
+						<span>Nome:</span>
+						<input type="text" name="nome" th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" disabled />
+						<span class="msgError" th:if="${#fields.hasErrors('nome')}">
+							<strong th:errors="*{nome}"></strong>
+						</span>
+					</label>
+					
+					<input type="reset" value="Cancelar" disabled />
+					<input type="submit" value="Alterar" disabled />
+				</form>
+			</div>
+		</div>
+		
+		<div class="confirmDeleteModuloModal">
+			<div class="content-modal">
+				<div class="title-modal">Deletar Módulo</div>
+				<div class="text-modal">Deseja realmente deletar o módulo "#mod#"?</div>
+				
+				<div class="btns">
+			    	<button type="button" class="cancelbtn">Cancelar</button>
+			    	<button type="button" class="confirmbtn">Deletar</button>
+				</div>
+				
+				<span class="idModulo" style="display: none;"></span>
+				<span class="nomeModulo" style="display: none;"></span>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

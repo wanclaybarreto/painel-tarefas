@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+	<div class="tarefaBox" layout:fragment="content">
+		<div class="title">TAREFAS</div>
+
+		<div class="msgSucess" th:if="${msg} != null">
+			<span th:text="${msg}"></span>
+		</div>
+
+		<form method="POST" th:object="${tarefa}" th:action="${editMode} ? @{/} + ${roleName} + '/tarefas/edit/save' : @{/} + ${roleName} + '/tarefas/new/save'" enctype="multipart/form-data">
+
+			<input type="hidden" name="id" th:field="*{id}" />
+
+			<div class="group">
+				<label class="marginRightLabelForm">
+					<span>Situação:</span>
+					<select name="situacao" th:field="*{situacao}" th:classappend="${#fields.hasErrors('situacao')} ? 'inputError' : ''">
+						<option value=""></option>
+						<option th:each="situacaoTarefa : ${situacoesTarefa}" th:value="${situacaoTarefa.id}" th:text="${situacaoTarefa.nome}"></option>
+					</select>
+					<span class="msgError" th:if="${#fields.hasErrors('situacao')}">
+						<strong th:errors="*{situacao}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Título:</span>
+					<input type="text" name="titulo" th:field="*{titulo}" th:classappend="${#fields.hasErrors('titulo')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('titulo')}">
+						<strong th:errors="*{titulo}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<div class="group">
+				<label>
+					<span>Descrição:</span>
+					<textarea name="descricao" th:field="*{descricao}" th:classappend="${#fields.hasErrors('descricao')} ? 'inputError' : ''"></textarea>
+					<span class="msgError" th:if="${#fields.hasErrors('descricao')}">
+						<strong th:errors="*{descricao}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<div class="group">
+				<label class="marginRightLabelForm">
+					<span>Imagem:</span>
+					<input type="file" name="imagemFile" class="custom-file-input" th:field="*{imagemFile}" th:classappend="${#fields.hasErrors('imagemFile')} ? 'inputErro' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('imagemFile')}">
+						<strong th:errors="*{imagemFile}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Vídeo:</span>
+					<input type="file" name="videoFile" class="custom-file-input" th:field="*{videoFile}" th:classappend="${#fields.hasErrors('videoFile')} ? 'inputErro' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('videoFile')}">
+						<strong th:errors="*{videoFile}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<div class="group">
+				<div class="imgSelected">
+					<div>Imagem selecionada:</div>
+					<img th:src="${editMode} ? @{/files/imagemTarefa/} + ${tarefa.imagem} : @{/images/transparent.png}" alt="" />
+					<div class="zoomImgSelected"> <img th:src="@{/icons/icon-zoom.png}" alt="" /> </div>
+				</div>
+				<div class="vidSelected">
+					<div>Vídeo selecionado:</div>
+					<video th:src="${editMode} ? @{/files/videoTarefa/} + ${tarefa.video} : ''" controls></video>
+				</div>
+			</div>
+			
+			<div class="modalEnlargedImgSelected">
+				<div class="closer">x</div>
+				<img alt="" th:src="${editMode} ? @{/files/imagemTarefa/} + ${tarefa.imagem} : @{/images/transparent.png}">
+			</div>
+
+			<div class="group dates">
+				<label class="marginRightLabelForm">
+					<span>Data de cadastro:</span>
+					<input type="date" name="data-cadastro" th:field="*{dataCadastro}" th:classappend="${#fields.hasErrors('dataCadastro')} ? 'inputErro' : ''" readonly />
+					<span class="msgError" th:if="${#fields.hasErrors('dataCadastro')}">
+						<strong th:errors="*{dataCadastro}"></strong>
+					</span>
+				</label>
+				
+				<label class="marginRightLabelForm">
+					<span>Data de previsão de finalização:</span>
+					<input type="date" name="data-previsao-finalizacao" th:field="*{dataPrevisaoFinalizacao}" th:classappend="${#fields.hasErrors('dataPrevisaoFinalizacao')} ? 'inputErro' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('dataPrevisaoFinalizacao')}">
+						<strong th:errors="*{dataPrevisaoFinalizacao}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Data de finalização:</span>
+					<input type="date" name="data-finalizacao" th:field="*{dataFinalizacao}" th:classappend="${#fields.hasErrors('dataFinalizacao')} ? 'inputErro' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('dataFinalizacao')}">
+						<strong th:errors="*{dataFinalizacao}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<div class="group">
+				<label>
+					<span>Solução:</span>
+					<textarea name="solucao" th:field="*{solucao}" th:classappend="${#fields.hasErrors('solucao')} ? 'inputErro' : ''"></textarea>
+					<span class="msgError" th:if="${#fields.hasErrors('solucao')}">
+						<strong th:errors="*{solucao}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<div class="group" >
+				<label>
+					<span>Técnico:</span>
+					<select name="tecnico" th:field="*{tecnico}" th:classappend="${#fields.hasErrors('tecnico')} ? 'inputError' : ''">
+						<option value=""></option>
+						<option th:each="tec : ${tecnicos}" th:value="${tec.id}" th:text="${tec.nome}"></option>
+					</select>
+					<span class="msgError" th:if="${#fields.hasErrors('tecnico')}">
+						<strong th:errors="*{tecnico}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<div class="group involved">
+				<label class="marginRightLabelForm">
+					<span>Cliente:</span>
+					<select name="cliente" th:field="*{cliente}" th:classappend="${#fields.hasErrors('cliente')} ? 'inputError' : ''">
+						<option value=""></option>
+						<option th:each="cli : ${clientes}" th:value="${cli.id}" th:text="${cli.nome}"></option>
+					</select>
+					<span class="msgError" th:if="${#fields.hasErrors('cliente')}">
+						<strong th:errors="*{cliente}"></strong>
+					</span>
+				</label>
+				
+				<label class="marginRightLabelForm">
+					<span>Módulo:</span>
+					<select name="modulo" th:field="*{modulo}" th:classappend="${#fields.hasErrors('modulo')} ? 'inputError' : ''">
+						<option value=""></option>
+						<option th:each="modu : ${modulos}" th:value="${modu.id}" th:text="${modu.nome}"></option>
+					</select>
+					<span class="msgError" th:if="${#fields.hasErrors('modulo')}">
+						<strong th:errors="*{modulo}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Desenvolvedor(a):</span>
+					<select name="desenvolvedor" th:field="*{desenvolvedor}" th:classappend="${#fields.hasErrors('desenvolvedor')} ? 'inputError' : ''">
+						<option value=""></option>
+						<option th:each="dev : ${desenvolvedores}" th:value="${dev.id}" th:text="${dev.nome}"></option>
+					</select>
+					<span class="msgError" th:if="${#fields.hasErrors('desenvolvedor')}">
+						<strong th:errors="*{desenvolvedor}"></strong>
+					</span>
+				</label>
+			</div>
+
+			<input type="submit" th:value="${editMode} ? 'Alterar' : 'Cadastrar'">
+		</form>
+	</div>
+</body>
+</html>

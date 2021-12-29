@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+	<div class="administradoresBox" layout:fragment="content">
+		<div class="title">ADMINISTRADORES</div>
+		
+		<div class="msgSucess" th:if="${msgSucess} != null">
+			<span th:text="${msgSucess}"></span>
+		</div>
+		
+		<div class="msgError" th:if="${msgError} != null">
+			<span th:text="${msgError}"></span>
+		</div>
+		
+		<div class="administradorCadastro">
+			<form name="administradorCadForm" method="POST" th:object="${administradorCad}" th:action="@{/} + ${roleName} + '/administradores/save'" >
+				<label>
+					<span>Nome:</span>
+					<input type="text" name="nome" th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('nome')}">
+						<strong th:errors="*{nome}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>E-mail:</span>
+					<input type="text" name="email" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('email')}">
+						<strong th:errors="*{email}"></strong>
+					</span>
+				</label>
+				
+				<label>
+					<span>Senha:</span>
+					<input type="password" name="senha" th:field="*{senha}" th:classappend="${#fields.hasErrors('senha')} ? 'inputError' : ''" />
+					<span class="msgError" th:if="${#fields.hasErrors('senha')}">
+						<strong th:errors="*{senha}"></strong>
+					</span>
+				</label>
+				
+				<input type="submit" value="Cadastrar" />
+			</form>
+		</div>
+		
+		<form name="administradorDelForm" method="POST" th:action="@{/} + ${roleName} + '/administradores/delete'" style="display: none;">
+			<input name="id-administrador-del" type="number" value="" />
+		</form>
+		
+		<div class="administradoresConsAlter">
+			<div class="div-table">
+				<table>
+					<tr>
+						<th>Cód.</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th></th>
+					</tr>
+
+					<tr th:each="administrador : ${administradores}">
+						<td th:text="${administrador.id}"></td>
+						<td th:text="${administrador.nome}"></td>
+						<td th:text="${administrador.email}"></td>
+						<td> <img th:src="@{/icons/icon-trash.png}"> </td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="div-alter">
+				<form name="administradorEdForm" method="POST" th:object="${administradorEd}" th:action="@{/} + ${roleName} + '/administradores/edit'">
+					<label>
+						<span>Código:</span>
+						<input type="number" name="id" th:field="*{id}" disabled />
+					</label>
+					
+					<label>
+						<span>Nome:</span>
+						<input type="text" name="nome" th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" disabled />
+						<span class="msgError" th:if="${#fields.hasErrors('nome')}">
+							<strong th:errors="*{nome}"></strong>
+						</span>
+					</label>
+					
+					<label>
+						<span>E-mail:</span>
+						<input type="text" name="email" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'inputError' : ''" disabled />
+						<span class="msgError" th:if="${#fields.hasErrors('email')}">
+							<strong th:errors="*{email}"></strong>
+						</span>
+					</label>
+					
+					<input type="hidden" name="senha" th:field="*{senha}" value="">
+					
+					<input type="reset" value="Cancelar" disabled />
+					<input type="submit" value="Alterar" disabled />
+				</form>
+			</div>
+		</div>
+		
+		<div class="confirmDeleteAdministradorModal">
+			<div class="content-modal">
+				<div class="title-modal">Deletar Administrador</div>
+				<div class="text-modal">Deseja realmente deletar o administrador "#adm#"?</div>
+				
+				<div class="btns">
+			    	<button type="button" class="cancelbtn">Cancelar</button>
+			    	<button type="button" class="confirmbtn">Deletar</button>
+				</div>
+				
+				<span class="idAdministrador" style="display: none;"></span>
+				<span class="nomeAdministrador" style="display: none;"></span>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

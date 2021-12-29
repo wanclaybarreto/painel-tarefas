@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+	<div class="relatoriosBox" layout:fragment="content">
+
+    	<div class="title">RELATÓRIOS</div>
+				
+        <div class="relatoriosFilters">
+			<div class="title-filters">Filtros</div>
+
+			<form method="GET" th:action="@{/} + ${roleName} + '/relatorios/create'">
+				<div class="group">
+					<label>
+						<span>Situação:</span>
+						<select name="id-situacao">
+							<option value="0"></option>
+							<option th:each="situacaoTarefa : ${situacoesTarefa}" th:value="${situacaoTarefa.id}" th:text="${situacaoTarefa.nome}"></option>
+						</select>
+					</label>
+
+					<label>
+						<span>Cliente:</span>
+						<select name="id-cliente">
+							<option value="0"></option>
+							<option th:each="cli : ${clientes}" th:value="${cli.id}" th:text="${cli.nome}"></option>
+						</select>
+					</label>
+
+					<label>
+						<span>Módulo:</span>
+						<select name="id-modulo">
+							<option value="0"></option>
+							<option th:each="modu : ${modulos}" th:value="${modu.id}" th:text="${modu.nome}"></option>
+						</select>
+					</label>
+					
+					<label>
+						<span>Técnico(a):</span>
+						<select name="id-tecnico">
+							<option value="0"></option>
+							<option th:each="tec : ${tecnicos}" th:value="${tec.id}" th:text="${tec.nome}"></option>
+						</select>
+					</label>
+					
+					<label>
+						<span>Desenvolvedor(a):</span>
+						<select name="id-desenvolvedor">
+							<option value="0"></option>
+							<option th:each="dev : ${desenvolvedores}" th:value="${dev.id}" th:text="${dev.nome}"></option>
+						</select>
+					</label>
+				</div>
+
+				<div class="group dates">
+					<label>
+						<span>Data:</span>
+                        <select name="data-desc">
+                            <option value="0"></option>
+                            <option value="1">Cadastro</option>
+                            <option value="2">Previsão de finalização</option>
+                            <option value="3">Finalização</option>
+                        </select>
+					</label>
+
+                    <label>
+                        <span>De:</span>
+                        <input type="date" name="data-in" />
+                    </label>
+
+                    <label>
+                        <span>Até:</span>
+                        <input type="date" name="data-fin" />
+                    </label>
+                </div>
+
+				<div class="submit">
+					<input type="button" value="Gerar" />
+				</div>
+			</form>
+		</div>
+		
+		<div class="validationDatesForm" >
+			Exemplo de mensage de validação!
+		</div>
+		
+		<div class="relatorioResult" th:if="${editMode}">
+			Relatório gerado com sucesso! <a th:href="@{/archives/relatorioTarefa/tarefas.pdf}" download="tarefas.pdf">Clique aqui</a> para baixar!
+		</div>
+
+	</div>
+
+    <div style="color: #eee;">_</div>
+
+</body>
+</html>

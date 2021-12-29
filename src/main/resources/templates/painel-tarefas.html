@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+	<div class="painelTarefasBox" layout:fragment="content">
+		
+		<div class="column" th:each="situacao, iterator : ${situacoesTarefa}">
+			<div class="title" th:style="'background: ' + ${situacao.cor} + ';'">
+				<span th:text="${situacao.nome}"></span>
+				<span th:text="${mapTarefaArrays.get(situacao.id).length}"></span>
+			</div>
+
+			<div class="content">
+				<div class="tarefa" th:each="trf : ${mapTarefaArrays.get(situacao.id)}" th:data-tarefa-id="${trf.id}">
+                    <div class="title-t" th:text="${trf.titulo}"></div>
+                    <div class="desc" th:text="${trf.descricao}"></div>
+                    <div class="cliente"> Cliente -> <span th:text="${trf.cliente.nome}"></span> </div>
+                    <div class="actions">
+                    	<span class="toEditTarefa"><img th:src="@{/icons/icon-reticencias.png}" /></span>
+                    </div>
+                </div>
+			</div>
+		</div>
+		
+		<form name="frmSendIdTarefaToEdit" method="GET" th:action="@{/} + ${roleName} + '/tarefas/edit'" style="display: none;">
+			<input type="number" name="tarefa-id">
+		</form>
+		
+	</div>
+</body>
+</html>

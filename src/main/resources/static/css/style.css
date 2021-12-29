@@ -1,0 +1,2166 @@
+:root {
+    --color-1: #015987;
+    --color-2: #3e7dae;
+    --color-3: #99d3ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', Arial, Liberation Sans;
+}
+
+.bgOrange {
+    background: #fdaa22;
+}
+.bgGreen {
+    background: #0bd18c;
+}
+.bgRed {
+    background: #fe6b7d;
+}
+.bgBlue {
+    background: #3e7dae;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.msgError {
+	margin-top: 20px;
+	margin-bottom: 40px;
+    color: #F00;
+    font-weight: 500;
+    text-align: center;
+}
+
+.msgSucess {
+	margin-top: 20px;
+	margin-bottom: 40px;
+    color: rgb(23, 185, 23);
+    font-weight: 500;
+    text-align: center;
+}
+
+.inputError {
+    border: 2px solid rgba(255, 0, 0, 0.5) !important;
+}
+
+
+
+.entrar {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+	justify-content: center;
+    align-items: center;
+    background-image: url("../images/bg-entrar.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+.entrar-in {
+    width: 300px;
+    padding: 20px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(1, 89, 158, 0.5);
+    border-radius: 5px;
+}
+
+.entrar-in img {
+	width: 230px;
+    margin-bottom: 20px;
+}
+
+.entrar-in form {
+    width: 70%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.entrar-in form input {
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: 0;
+    outline: 0;
+    background: var(--color-3);
+}
+
+.entrar-in form input[type=submit] {
+    background: var(--color-1);
+    color: #FFF;
+    cursor: pointer;
+}
+
+.entrar-in form input[type=submit]:hover {
+    background: var(--color-2);
+}
+
+.entrar-in form input[type=submit]:active {
+    background: var(--color-3);
+}
+
+
+
+.container {
+    width: 100%;
+}
+
+nav {
+    position: fixed;
+    width: 60px;
+    height: 100%;
+    background: var(--color-1);
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+nav.active {
+    width: 250px;
+}
+
+nav ul {
+    width: 100%;
+}
+
+nav ul li {
+    width: 100%;
+    list-style: none;
+}
+
+nav ul li:hover {
+    background: var(--color-2);
+}
+
+nav ul li:nth-child(1) a {
+    margin-bottom: 20px;
+    cursor: default;
+}
+
+nav ul li:nth-child(1):hover {
+    background: transparent;
+}
+
+nav ul li a {
+    width: 100%;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li:nth-child(1) a {
+    height: 60px;
+    padding-left: 5px;
+}
+
+nav .title {
+    display: none;
+}
+
+nav.active .title {
+    display: initial;
+}
+
+nav ul li a .icon {
+    margin-right: 5px;
+}
+
+
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 60px;
+    background: #eee;
+    transition: 0.5s;
+}
+
+.main .topbar {
+    width: 100%;
+    height: 60px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    transition: 0.5s;
+}
+
+.main.active .topbar {
+    padding-left: 200px;
+}
+
+.toggle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+    cursor: pointer;
+}
+
+.toggle .line {
+    height: 4px;
+	border-radius: 5px;
+	background-color: var(--color-1);
+	transition: 0.5s;
+}
+
+.toggle.active .line:nth-child(1) {
+    transform: rotate(45deg);
+    margin-top: 6px;
+}
+
+.toggle.active .line:nth-child(2) {
+    display: none;
+}
+
+.toggle.active .line:nth-child(3) {
+    transform: rotate(-45deg);
+    margin-top: -23px;
+}
+
+.user {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--color-1);
+}
+
+
+
+.painelTarefasBox {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    padding-bottom: 18px;
+}
+
+.painelTarefasBox .column {
+    margin: 0 10px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.painelTarefasBox .column .title {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+    font-size: 18px;
+}
+
+.painelTarefasBox .column .content {
+    height: calc(100vh - 140px);
+    padding: 10px;
+    background: #EEE;
+    overflow-y: scroll;
+}
+
+.painelTarefasBox .column .content .tarefa {
+    margin-bottom: 5px;
+    padding: 10px;
+    background: #CCC;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.painelTarefasBox .column .content .tarefa .title-t {
+    font-size: 18px;
+    color: #000;
+}
+
+.painelTarefasBox .column .content .tarefa .desc {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+.painelTarefasBox .column .content .tarefa .cliente {
+	margin-top: 10px;
+	font-size: 12px;
+	color: #444;
+}
+
+.painelTarefasBox .column .content .tarefa .actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+
+.painelTarefasBox .column .content .tarefa .actions img {
+    width: 20px;
+    cursor: pointer;
+}
+
+
+
+.tarefaBox {
+    margin-top: 40px;
+    padding: 0 10px 40px 10px;
+}
+
+.tarefaBox .title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.tarefaBox .group {
+    margin-bottom: 10px;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    background: #BBB;
+    border-radius: 5px;
+}
+
+.tarefaBox .group label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarefaBox .group label.marginRightLabelForm {
+    margin-right: 20px;
+}
+
+.tarefaBox .group label span {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.tarefaBox .group label select, .tarefaBox .group label input, .tarefaBox .group label textarea {
+    width: 100%;
+    padding: 5px;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.tarefaBox .group label textarea {
+    resize: none;
+    height: 100px;
+}
+
+.tarefaBox .group label input[type="file"] {
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: #FFF;
+}
+
+.tarefaBox .group label .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.tarefaBox .group label .custom-file-input::before {
+    padding: 5px 8px;
+    margin-right: -130px;
+    display: inline-block;
+    background: var(--color-1);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    outline: none;
+    content: 'Selecionar';
+    color: #FFF;
+    cursor: pointer;
+}
+.tarefaBox .group label .custom-file-input:hover::before {
+    background: var(--color-2);
+}
+.tarefaBox .group label .custom-file-input:active::before {
+    background: var(--color-3);
+}
+
+.tarefaBox input[type="submit"] {
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px 50px;
+    display: block;
+    background: var(--color-1);
+    border: 0;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.tarefaBox input[type="submit"]:hover {
+    background: var(--color-2);
+}
+
+.tarefaBox input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.tarefaBox .group .imgSelected, .tarefaBox .group .vidSelected {
+    flex: 1;
+}
+
+.tarefaBox .group .imgSelected {
+    padding-right: 5px;
+}
+
+.tarefaBox .group .imgSelected img {
+    width: 100%;
+    border: 3px solid var(--color-1);
+    border-radius: 5px;
+}
+
+.tarefaBox .group .imgSelected .zoomImgSelected {
+	position: absolute;
+	margin-top: -46px;
+	margin-left: 5px;
+}
+
+.tarefaBox .group .imgSelected .zoomImgSelected img {
+	background: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+.tarefaBox .group .imgSelected .zoomImgSelected img:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.tarefaBox .group .imgSelected .zoomImgSelected img:active {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.tarefaBox .modalEnlargedImgSelected {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.tarefaBox .modalEnlargedImgSelected img {
+	max-height: 90%;
+	max-width: 90%;
+}
+
+.tarefaBox .modalEnlargedImgSelected .closer {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	font-size: 32px;
+	font-weight: 500;
+	color: #F00;
+	cursor: pointer;
+	z-index: 15;
+}
+
+.tarefaBox .group .vidSelected {
+    margin-left: 5px;
+}
+
+.tarefaBox .group .vidSelected video {
+    width: 100%;
+    border: 3px solid var(--color-1);
+    border-radius: 5px;
+}
+
+.tarefaBox .group .imgSelected > div, .tarefaBox .group .vidSelected > div {
+    margin-bottom: 5px;
+}
+
+
+
+.situacoesBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.situacoesBox .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.situacoesBox form {
+    width: 100%;
+    display: flex;
+}
+
+.situacoesBox form label {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.situacoesBox label span {
+    font-weight: 500;
+}
+
+.situacoesBox form label input {
+    height: 22px;
+    margin-top: 2px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.situacoesBox .situacaoCadastro {
+    margin-top: 30px;
+}
+
+.situacoesBox .situacaoCadastro form label:nth-child(3) {
+    width: 50px;
+}
+
+.situacoesBox .situacaoCadastro form label:nth-child(2) {
+    width: 170px;
+}
+
+.situacoesBox .situacaoCadastro input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.situacoesBox .situacaoCadastro input[type="submit"]:hover {
+    background: var(--color-1);
+}
+
+.situacoesBox .situacaoCadastro input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.situacoesBox .situacoesConsAlter .div-table {
+	margin-top: 30px;
+    width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.situacoesBox .situacoesConsAlter table {
+    border-collapse: collapse;
+ 	width: 100%;
+ 	margin: auto;
+ 	cursor: default;
+}
+
+.situacoesBox .situacoesConsAlter table th {
+    padding-top: 12px;
+  	padding-bottom: 12px;
+  	text-align: left;
+	background-color: var(--color-1);
+ 	color: white;
+}
+
+.situacoesBox .situacoesConsAlter table td, .situacoesBox .situacoesConsAlter table th {
+	border: 1px solid #ddd;
+ 	padding: 8px;
+}
+
+.situacoesBox .situacoesConsAlter table tr:nth-child(even) {background: var(--color-3);}
+
+.situacoesBox .situacoesConsAlter table tr:hover {background: var(--color-2);}
+
+.situacoesBox .situacoesConsAlter table td:nth-child(5), .situacoesBox .situacoesConsAlter table th:nth-child(5) {
+	width: 32px;
+	padding: 0;
+	background: #EEE;
+	border: none;
+}
+
+.situacoesBox .situacoesConsAlter table img {
+	cursor: pointer;
+}
+
+.situacoesBox .situacoesConsAlter .div-alter {
+    margin-top: 30px;
+}
+
+.situacoesBox .situacoesConsAlter form label:first-child {
+    width: 100px;
+}
+
+.situacoesBox .situacoesConsAlter form label:nth-child(4) {
+    width: 50px;
+}
+
+.situacoesBox .situacoesConsAlter form label:nth-child(3) {
+    width: 170px;
+}
+
+.situacoesBox .situacoesConsAlter input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.situacoesBox .situacoesConsAlter input[type="reset"] {
+    margin-right: 10px;
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btnForm {
+    background: var(--color-2) !important;
+}
+
+.btnForm:hover {
+    background: var(--color-1) !important;
+}
+
+.btnForm:active {
+    background: var(--color-3) !important;
+}
+
+
+
+.confirmDeleteSituacaoModal {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
+	z-index: 10;
+}
+.confirmDeleteSituacaoModal .content-modal {
+	width: 300px;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FFF;
+	border-radius: 2px;
+	text-align: center;
+}
+
+.confirmDeleteSituacaoModal .content-modal .title-modal {
+	margin: 25px 0;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.confirmDeleteSituacaoModal .content-modal .btns {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.confirmDeleteSituacaoModal .content-modal .btns button {
+	padding: 10px;
+	border: none;
+	float: left;
+	width: 50%;
+	color: #FFF;
+	outline: 0;
+}
+
+.confirmDeleteSituacaoModal .content-modal .btns .cancelbtn {
+	background: #999;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.confirmDeleteSituacaoModal .content-modal .btns .cancelbtn:hover {
+	background: #BBB;
+}
+.confirmDeleteSituacaoModal .content-modal .btns .cancelbtn:active {
+	background: #777;
+}
+
+.confirmDeleteSituacaoModal .content-modal .btns .confirmbtn {
+	background: var(--color-1);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.confirmDeleteSituacaoModal .content-modal .btns .confirmbtn:hover {
+	background: var(--color-2);
+}
+.confirmDeleteSituacaoModal .content-modal .btns .confirmbtn:active {
+	background: var(--color-3);
+}
+
+
+
+.modulosBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.modulosBox .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.modulosBox form {
+    width: 100%;
+    display: flex;
+}
+
+.modulosBox form label {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.modulosBox label span {
+    font-weight: 500;
+}
+
+.modulosBox form label input {
+    height: 22px;
+    margin-top: 2px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.modulosBox .moduloCadastro {
+    margin-top: 30px;
+}
+
+.modulosBox .moduloCadastro input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.modulosBox .moduloCadastro input[type="submit"]:hover {
+    background: var(--color-1);
+}
+
+.modulosBox .moduloCadastro input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.modulosBox .modulosConsAlter .div-table {
+	margin-top: 30px;
+    width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.modulosBox .modulosConsAlter table {
+    border-collapse: collapse;
+ 	width: 100%;
+ 	margin: auto;
+ 	cursor: default;
+}
+
+.modulosBox .modulosConsAlter table th {
+    padding-top: 12px;
+  	padding-bottom: 12px;
+  	text-align: left;
+	background-color: var(--color-1);
+ 	color: white;
+}
+
+.modulosBox .modulosConsAlter table td, .modulosBox .modulosConsAlter table th {
+	border: 1px solid #ddd;
+ 	padding: 8px;
+}
+
+.modulosBox .modulosConsAlter table tr:nth-child(even) {background: var(--color-3);}
+
+.modulosBox .modulosConsAlter table tr:hover {background: var(--color-2);}
+
+.modulosBox .modulosConsAlter table td:nth-child(3), .modulosBox .modulosConsAlter table th:nth-child(3) {
+	width: 32px;
+	padding: 0;
+	background: #EEE;
+	border: none;
+}
+
+.modulosBox .modulosConsAlter table img {
+	cursor: pointer;
+}
+
+.modulosBox .modulosConsAlter .div-alter {
+    margin-top: 30px;
+}
+
+.modulosBox .modulosConsAlter form label:first-child {
+    width: 100px;
+}
+
+.modulosBox .modulosConsAlter input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.modulosBox .modulosConsAlter input[type="reset"] {
+    margin-right: 10px;
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btnForm {
+    background: var(--color-2) !important;
+}
+
+.btnForm:hover {
+    background: var(--color-1) !important;
+}
+
+.btnForm:active {
+    background: var(--color-3) !important;
+}
+
+
+
+.confirmDeleteModuloModal {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
+	z-index: 10;
+}
+.confirmDeleteModuloModal .content-modal {
+	width: 300px;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FFF;
+	border-radius: 2px;
+	text-align: center;
+}
+
+.confirmDeleteModuloModal .content-modal .title-modal {
+	margin: 25px 0;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.confirmDeleteModuloModal .content-modal .btns {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.confirmDeleteModuloModal .content-modal .btns button {
+	padding: 10px;
+	border: none;
+	float: left;
+	width: 50%;
+	color: #FFF;
+	outline: 0;
+}
+
+.confirmDeleteModuloModal .content-modal .btns .cancelbtn {
+	background: #999;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.confirmDeleteModuloModal .content-modal .btns .cancelbtn:hover {
+	background: #BBB;
+}
+.confirmDeleteModuloModal .content-modal .btns .cancelbtn:active {
+	background: #777;
+}
+
+.confirmDeleteModuloModal .content-modal .btns .confirmbtn {
+	background: var(--color-1);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.confirmDeleteModuloModal .content-modal .btns .confirmbtn:hover {
+	background: var(--color-2);
+}
+.confirmDeleteModuloModal .content-modal .btns .confirmbtn:active {
+	background: var(--color-3);
+}
+
+
+
+.clientesBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.clientesBox .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.clientesBox form {
+    width: 100%;
+    display: flex;
+}
+
+.clientesBox form label {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.clientesBox label span {
+    font-weight: 500;
+}
+
+.clientesBox form label input {
+    height: 22px;
+    margin-top: 2px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.clientesBox .clienteCadastro {
+    margin-top: 30px;
+}
+
+.clientesBox .clienteCadastro input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.clientesBox .clienteCadastro input[type="submit"]:hover {
+    background: var(--color-1);
+}
+
+.clientesBox .clienteCadastro input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.clientesBox .clientesConsAlter .div-table {
+	margin-top: 30px;
+    width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.clientesBox .clientesConsAlter table {
+    border-collapse: collapse;
+ 	width: 100%;
+ 	margin: auto;
+ 	cursor: default;
+}
+
+.clientesBox .clientesConsAlter table th {
+    padding-top: 12px;
+  	padding-bottom: 12px;
+  	text-align: left;
+	background-color: var(--color-1);
+ 	color: white;
+}
+
+.clientesBox .clientesConsAlter table td, .clientesBox .clientesConsAlter table th {
+	border: 1px solid #ddd;
+ 	padding: 8px;
+}
+
+.clientesBox .clientesConsAlter table tr:nth-child(even) {background: var(--color-3);}
+
+.clientesBox .clientesConsAlter table tr:hover {background: var(--color-2);}
+
+.clientesBox .clientesConsAlter table td:nth-child(3), .clientesBox .clientesConsAlter table th:nth-child(3) {
+	width: 32px;
+	padding: 0;
+	background: #EEE;
+	border: none;
+}
+
+.clientesBox .clientesConsAlter table img {
+	cursor: pointer;
+}
+
+.clientesBox .clientesConsAlter .div-alter {
+    margin-top: 30px;
+}
+
+.clientesBox .clientesConsAlter form label:first-child {
+    width: 100px;
+}
+
+.clientesBox .clientesConsAlter input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.clientesBox .clientesConsAlter input[type="reset"] {
+    margin-right: 10px;
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btnForm {
+    background: var(--color-2) !important;
+}
+
+.btnForm:hover {
+    background: var(--color-1) !important;
+}
+
+.btnForm:active {
+    background: var(--color-3) !important;
+}
+
+
+
+.confirmDeleteClienteModal {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
+	z-index: 10;
+}
+.confirmDeleteClienteModal .content-modal {
+	width: 300px;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FFF;
+	border-radius: 2px;
+	text-align: center;
+}
+
+.confirmDeleteClienteModal .content-modal .title-modal {
+	margin: 25px 0;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.confirmDeleteClienteModal .content-modal .btns {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.confirmDeleteClienteModal .content-modal .btns button {
+	padding: 10px;
+	border: none;
+	float: left;
+	width: 50%;
+	color: #FFF;
+	outline: 0;
+}
+
+.confirmDeleteClienteModal .content-modal .btns .cancelbtn {
+	background: #999;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.confirmDeleteClienteModal .content-modal .btns .cancelbtn:hover {
+	background: #BBB;
+}
+.confirmDeleteClienteModal .content-modal .btns .cancelbtn:active {
+	background: #777;
+}
+
+.confirmDeleteClienteModal .content-modal .btns .confirmbtn {
+	background: var(--color-1);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.confirmDeleteClienteModal .content-modal .btns .confirmbtn:hover {
+	background: var(--color-2);
+}
+.confirmDeleteClienteModal .content-modal .btns .confirmbtn:active {
+	background: var(--color-3);
+}
+
+
+
+.tecnicosBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.tecnicosBox .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.tecnicosBox form {
+    width: 100%;
+    display: flex;
+}
+
+.tecnicosBox form label {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tecnicosBox label span {
+    font-weight: 500;
+}
+
+.tecnicosBox form label input {
+    height: 22px;
+    margin-top: 2px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.tecnicosBox .tecnicoCadastro {
+    margin-top: 30px;
+}
+
+.tecnicosBox .tecnicoCadastro input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.tecnicosBox .tecnicoCadastro input[type="submit"]:hover {
+    background: var(--color-1);
+}
+
+.tecnicosBox .tecnicoCadastro input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.tecnicosBox .tecnicosConsAlter .div-table {
+	margin-top: 30px;
+    width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.tecnicosBox .tecnicosConsAlter table {
+    border-collapse: collapse;
+ 	width: 100%;
+ 	margin: auto;
+ 	cursor: default;
+}
+
+.tecnicosBox .tecnicosConsAlter table th {
+    padding-top: 12px;
+  	padding-bottom: 12px;
+  	text-align: left;
+	background-color: var(--color-1);
+ 	color: white;
+}
+
+.tecnicosBox .tecnicosConsAlter table td, .tecnicosBox .tecnicosConsAlter table th {
+	border: 1px solid #ddd;
+ 	padding: 8px;
+}
+
+.tecnicosBox .tecnicosConsAlter table tr:nth-child(even) {background: var(--color-3);}
+
+.tecnicosBox .tecnicosConsAlter table tr:hover {background: var(--color-2);}
+
+.tecnicosBox .tecnicosConsAlter table td:nth-child(4), .tecnicosBox .tecnicosConsAlter table th:nth-child(4) {
+	width: 32px;
+	padding: 0;
+	background: #EEE;
+	border: none;
+}
+
+.tecnicosBox .tecnicosConsAlter table img {
+	cursor: pointer;
+}
+
+.tecnicosBox .tecnicosConsAlter .div-alter {
+    margin-top: 30px;
+}
+
+.tecnicosBox .tecnicosConsAlter form label:first-child {
+    width: 100px;
+}
+
+.tecnicosBox .tecnicosConsAlter input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.tecnicosBox .tecnicosConsAlter input[type="reset"] {
+    margin-right: 10px;
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btnForm {
+    background: var(--color-2) !important;
+}
+
+.btnForm:hover {
+    background: var(--color-1) !important;
+}
+
+.btnForm:active {
+    background: var(--color-3) !important;
+}
+
+
+
+.confirmDeleteTecnicoModal {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
+	z-index: 10;
+}
+.confirmDeleteTecnicoModal .content-modal {
+	width: 300px;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FFF;
+	border-radius: 2px;
+	text-align: center;
+}
+
+.confirmDeleteTecnicoModal .content-modal .title-modal {
+	margin: 25px 0;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.confirmDeleteTecnicoModal .content-modal .btns {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.confirmDeleteTecnicoModal .content-modal .btns button {
+	padding: 10px;
+	border: none;
+	float: left;
+	width: 50%;
+	color: #FFF;
+	outline: 0;
+}
+
+.confirmDeleteTecnicoModal .content-modal .btns .cancelbtn {
+	background: #999;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.confirmDeleteTecnicoModal .content-modal .btns .cancelbtn:hover {
+	background: #BBB;
+}
+.confirmDeleteTecnicoModal .content-modal .btns .cancelbtn:active {
+	background: #777;
+}
+
+.confirmDeleteTecnicoModal .content-modal .btns .confirmbtn {
+	background: var(--color-1);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.confirmDeleteTecnicoModal .content-modal .btns .confirmbtn:hover {
+	background: var(--color-2);
+}
+.confirmDeleteTecnicoModal .content-modal .btns .confirmbtn:active {
+	background: var(--color-3);
+}
+
+
+
+.administradoresBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.administradoresBox .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.administradoresBox form {
+    width: 100%;
+    display: flex;
+}
+
+.administradoresBox form label {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.administradoresBox label span {
+    font-weight: 500;
+}
+
+.administradoresBox form label input {
+    height: 22px;
+    margin-top: 2px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.administradoresBox .administradorCadastro {
+    margin-top: 30px;
+}
+
+.administradoresBox .administradorCadastro input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.administradoresBox .administradorCadastro input[type="submit"]:hover {
+    background: var(--color-1);
+}
+
+.administradoresBox .administradorCadastro input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.administradoresBox .administradoresConsAlter .div-table {
+	margin-top: 30px;
+    width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.administradoresBox .administradoresConsAlter table {
+    border-collapse: collapse;
+ 	width: 100%;
+ 	margin: auto;
+ 	cursor: default;
+}
+
+.administradoresBox .administradoresConsAlter table th {
+    padding-top: 12px;
+  	padding-bottom: 12px;
+  	text-align: left;
+	background-color: var(--color-1);
+ 	color: white;
+}
+
+.administradoresBox .administradoresConsAlter table td, .administradoresBox .administradoresConsAlter table th {
+	border: 1px solid #ddd;
+ 	padding: 8px;
+}
+
+.administradoresBox .administradoresConsAlter table tr:nth-child(even) {background: var(--color-3);}
+
+.administradoresBox .administradoresConsAlter table tr:hover {background: var(--color-2);}
+
+.administradoresBox .administradoresConsAlter table td:nth-child(4), .administradoresBox .administradoresConsAlter table th:nth-child(4) {
+	width: 32px;
+	padding: 0;
+	background: #EEE;
+	border: none;
+}
+
+.administradoresBox .administradoresConsAlter table img {
+	cursor: pointer;
+}
+
+.administradoresBox .administradoresConsAlter .div-alter {
+    margin-top: 30px;
+}
+
+.administradoresBox .administradoresConsAlter form label:first-child {
+    width: 100px;
+}
+
+.administradoresBox .administradoresConsAlter input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.administradoresBox .administradoresConsAlter input[type="reset"] {
+    margin-right: 10px;
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btnForm {
+    background: var(--color-2) !important;
+}
+
+.btnForm:hover {
+    background: var(--color-1) !important;
+}
+
+.btnForm:active {
+    background: var(--color-3) !important;
+}
+
+
+
+.confirmDeleteAdministradorModal {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
+	z-index: 10;
+}
+.confirmDeleteAdministradorModal .content-modal {
+	width: 300px;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FFF;
+	border-radius: 2px;
+	text-align: center;
+}
+
+.confirmDeleteAdministradorModal .content-modal .title-modal {
+	margin: 25px 0;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.confirmDeleteAdministradorModal .content-modal .btns {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.confirmDeleteAdministradorModal .content-modal .btns button {
+	padding: 10px;
+	border: none;
+	float: left;
+	width: 50%;
+	color: #FFF;
+	outline: 0;
+}
+
+.confirmDeleteAdministradorModal .content-modal .btns .cancelbtn {
+	background: #999;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.confirmDeleteAdministradorModal .content-modal .btns .cancelbtn:hover {
+	background: #BBB;
+}
+.confirmDeleteAdministradorModal .content-modal .btns .cancelbtn:active {
+	background: #777;
+}
+
+.confirmDeleteAdministradorModal .content-modal .btns .confirmbtn {
+	background: var(--color-1);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.confirmDeleteAdministradorModal .content-modal .btns .confirmbtn:hover {
+	background: var(--color-2);
+}
+.confirmDeleteAdministradorModal .content-modal .btns .confirmbtn:active {
+	background: var(--color-3);
+}
+
+
+
+.desenvolvedoresBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.desenvolvedoresBox .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.desenvolvedoresBox form {
+    width: 100%;
+    display: flex;
+}
+
+.desenvolvedoresBox form label {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.desenvolvedoresBox label span {
+    font-weight: 500;
+}
+
+.desenvolvedoresBox form label input {
+    height: 22px;
+    margin-top: 2px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.desenvolvedoresBox .desenvolvedorCadastro {
+    margin-top: 30px;
+}
+
+.desenvolvedoresBox .desenvolvedorCadastro input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.desenvolvedoresBox .desenvolvedorCadastro input[type="submit"]:hover {
+    background: var(--color-1);
+}
+
+.desenvolvedoresBox .desenvolvedorCadastro input[type="submit"]:active {
+    background: var(--color-3);
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter .div-table {
+	margin-top: 30px;
+    width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table {
+    border-collapse: collapse;
+ 	width: 100%;
+ 	margin: auto;
+ 	cursor: default;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table th {
+    padding-top: 12px;
+  	padding-bottom: 12px;
+  	text-align: left;
+	background-color: var(--color-1);
+ 	color: white;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table td, .desenvolvedoresBox .desenvolvedoresConsAlter table th {
+	border: 1px solid #ddd;
+ 	padding: 8px;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table tr:nth-child(even) {background: var(--color-3);}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table tr:hover {background: var(--color-2);}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table td:nth-child(4), .desenvolvedoresBox .desenvolvedoresConsAlter table th:nth-child(4) {
+	width: 32px;
+	padding: 0;
+	background: #EEE;
+	border: none;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter table img {
+	cursor: pointer;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter .div-alter {
+    margin-top: 30px;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter form label:first-child {
+    width: 100px;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter input[type="submit"] {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.desenvolvedoresBox .desenvolvedoresConsAlter input[type="reset"] {
+    margin-right: 10px;
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: #BBB;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btnForm {
+    background: var(--color-2) !important;
+}
+
+.btnForm:hover {
+    background: var(--color-1) !important;
+}
+
+.btnForm:active {
+    background: var(--color-3) !important;
+}
+
+
+
+.confirmDeleteDesenvolvedorModal {
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
+	z-index: 10;
+}
+.confirmDeleteDesenvolvedorModal .content-modal {
+	width: 300px;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FFF;
+	border-radius: 2px;
+	text-align: center;
+}
+
+.confirmDeleteDesenvolvedorModal .content-modal .title-modal {
+	margin: 25px 0;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.confirmDeleteDesenvolvedorModal .content-modal .btns {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.confirmDeleteDesenvolvedorModal .content-modal .btns button {
+	padding: 10px;
+	border: none;
+	float: left;
+	width: 50%;
+	color: #FFF;
+	outline: 0;
+}
+
+.confirmDeleteDesenvolvedorModal .content-modal .btns .cancelbtn {
+	background: #999;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.confirmDeleteDesenvolvedorModal .content-modal .btns .cancelbtn:hover {
+	background: #BBB;
+}
+.confirmDeleteDesenvolvedorModal .content-modal .btns .cancelbtn:active {
+	background: #777;
+}
+
+.confirmDeleteDesenvolvedorModal .content-modal .btns .confirmbtn {
+	background: var(--color-1);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.confirmDeleteDesenvolvedorModal .content-modal .btns .confirmbtn:hover {
+	background: var(--color-2);
+}
+.confirmDeleteDesenvolvedorModal .content-modal .btns .confirmbtn:active {
+	background: var(--color-3);
+}
+
+
+
+.relatoriosBox {
+    margin-top: 40px;
+    padding: 0 10px 20px 10px;
+}
+
+.relatoriosBox .title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-1);
+}
+
+.relatoriosFilters {
+    background: #BBB;
+    padding: 10px 0 10px 0;
+    border-radius: 5px;
+}
+
+.relatoriosFilters .title-filters {
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.relatoriosFilters form {
+    width: 100%;
+}
+
+.relatoriosFilters .group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.relatoriosFilters label {
+    margin-left: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.relatoriosFilters label:nth-child(1) {
+    margin-left: 0;
+}
+
+.relatoriosFilters label span {
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.relatoriosFilters label input, .relatoriosFilters label select {
+    height: 26px;
+    padding: 5px;
+    background: #FFF;
+    border: 0;
+    border-radius: 2px;
+    outline: 0;
+}
+
+.relatoriosFilters .submit {
+    width: fit-content;
+    margin: auto;
+}
+
+.relatoriosFilters .submit input {
+    padding: 3px 7px;
+    align-self: flex-end;
+    box-sizing: content-box;
+    background: var(--color-2);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.relatoriosFilters .submit input:hover {
+    background: var(--color-1);
+}
+
+.relatoriosFilters .submit input:active {
+    background: var(--color-3);
+}
+
+.relatorioResult {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--color-4);
+    font-weight: 500;
+}
+
+.validationDatesForm {
+	margin-top: 30px;
+	display: none;
+    text-align: center;
+    font-size: 18px;
+    color: #F00;
+    font-weight: 500;
+}
+
+
+
+@media (max-width: 980px) and (min-width: 812px) {
+    .painelTarefasBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tarefaBox .group.dates, .tarefaBox .group.involved {
+        flex-wrap: wrap;
+    }
+
+    .tarefaBox .group.dates label, .tarefaBox .group.involved label {
+        width: 49%;
+        margin: 0;
+    }
+
+    .tarefaBox .group.dates label:last-child, .tarefaBox .group.involved label:last-child {
+        margin: auto;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 811px) and (min-width: 676px) {
+    .painelTarefasBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tarefaBox .group.dates, .tarefaBox .group.involved {
+        flex-wrap: wrap;
+    }
+
+    .tarefaBox .group.dates label, .tarefaBox .group.involved label {
+        width: 49%;
+        margin: 0;
+    }
+
+    .tarefaBox .group.dates label:last-child, .tarefaBox .group.involved label:last-child {
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .situacoesBox form {
+        flex-direction: column;
+    }
+
+    .situacoesBox form label {
+        margin-top: 10px;
+    }
+
+    .situacoesBox form input[type='reset'], .situacoesBox form input[type='submit'] {
+        margin: 0 !important;
+    }
+
+    .situacoesBox .situacoesConsAlter form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+    
+    .modulosBox form {
+        flex-direction: column;
+    }
+
+    .modulosBox form label {
+        margin-top: 10px;
+    }
+
+    .modulosBox form input[type='submit'], .modulosBox form input[type='reset'] {
+        margin-top: 10px !important;
+        margin-right: 0 !important;
+    }
+    
+    .tecnicosBox form {
+        flex-direction: column;
+    }
+
+    .tecnicosBox form label {
+        margin-top: 10px;
+    }
+
+    .tecnicosBox form input[type='submit'], .tecnicosBox form input[type='reset'] {
+        margin-top: 10px !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 675px) and (min-width: 601px) {
+    .painelTarefasBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tarefaBox .group.dates, .tarefaBox .group.involved {
+        flex-direction: column;
+    }
+
+    .tarefaBox .group.dates label, .tarefaBox .group.involved label {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    .tarefaBox .group.dates label:first-child, .tarefaBox .group.involved label:first-child {
+        margin-top: 0;
+    }
+    
+    .situacoesBox form {
+        flex-direction: column;
+    }
+
+    .situacoesBox form label {
+        margin-top: 10px;
+    }
+
+    .situacoesBox form input[type='reset'], .situacoesBox form input[type='submit'] {
+        margin: 0 !important;
+    }
+
+    .situacoesBox .situacoesConsAlter form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+    
+    .modulosBox form {
+        flex-direction: column;
+    }
+
+    .modulosBox form label {
+        margin-top: 10px;
+    }
+
+    .modulosBox form input[type='reset'], .modulosBox form input[type='submit'] {
+        margin: 0 !important;
+    }
+
+    .modulosBox .modulosConsAlter form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+    
+    .tecnicosBox form {
+        flex-direction: column;
+    }
+
+    .tecnicosBox form label {
+        margin-top: 10px;
+    }
+
+    .tecnicosBox form input[type='reset'], .tecnicosBox form input[type='submit'] {
+        margin: 0 !important;
+    }
+
+    .tecnicosBox .tecnicosConsAlter form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .painelTarefasBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .tarefaBox .group {
+        flex-direction: column;
+    }
+
+    .tarefaBox .group label {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    .tarefaBox .group label:first-child {
+        margin-top: 0;
+    }
+
+    .tarefaBox .group .imgSelected {
+        padding-right: initial;
+    }
+    
+    .tarefaBox .group .vidSelected {
+        margin-left: initial;
+    }
+
+    .tarefaBox .group .vidSelected {
+        margin-top: 20px;
+    }
+
+    nav {
+        width: 0;
+    }
+
+    .main {
+        padding-left: 0;
+    }
+
+    .main.active .topbar {
+        padding-left: 255px;
+    }
+
+    .main.active .topbar .user {
+        display: none;
+    }
+    
+    .situacoesBox form {
+        flex-direction: column;
+    }
+
+    .situacoesBox form label {
+        width: initial !important;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .situacoesBox form input[type='color'] {
+        margin-bottom: 10px;
+    }
+
+    .situacoesBox form input[type='reset'], .situacoesBox form input[type='submit'] {
+        width: 50%;
+        margin: 0 !important;
+        align-self: center !important;
+    }
+
+    .situacoesBox .situacoesConsAlter form input[type='reset'],
+    .situacoesBox form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+    
+    .modulosBox form {
+        flex-direction: column;
+    }
+
+    .modulosBox form label {
+        width: initial !important;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .modulosBox form input[type='color'] {
+        margin-bottom: 10px;
+    }
+
+    .modulosBox form input[type='reset'], .modulosBox form input[type='submit'] {
+        width: 50%;
+        margin: 0 !important;
+        align-self: center !important;
+    }
+
+    .modulosBox .modulosConsAlter form input[type='reset'],
+    .modulosBox form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+    
+    .tecnicosBox form {
+        flex-direction: column;
+    }
+
+    .tecnicosBox form label {
+        width: initial !important;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .tecnicosBox form input[type='color'] {
+        margin-bottom: 10px;
+    }
+
+    .tecnicosBox form input[type='reset'], .tecnicosBox form input[type='submit'] {
+        width: 50%;
+        margin: 0 !important;
+        align-self: center !important;
+    }
+
+    .tecnicosBox .tecnicosConsAlter form input[type='reset'],
+    .tecnicosBox form input[type='submit'] {
+        margin-top: 10px !important;
+    }
+}

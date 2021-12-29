@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<meta charset="utf-8" />
+	<meta lang="pt-br" />
+	<meta id="viewport" name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<title>WB Software</title>
+	<link rel="icon" type="image/png" href="images/wb-logotipo.png" />
+
+	<!-- FONTE UBUNTU: -->
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+
+	<!-- CSS: -->
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+
+	<div class="entrar">
+		<div class="entrar-in">
+			<img src="images/wb-logotipo-white.png">
+
+			<form method="POST" th:action="@{/login}">
+				<input type="text"     name="username"   placeholder="Usuário" required/>
+				<input type="password" name="password"   placeholder="Senha"   required/>
+				<input type="submit" value="Entrar" />
+			</form>
+			
+			<div class="msgError" th:if="${msg != null}">
+            	<span th:text="${msg}"></span>
+            </div>
+		</div>
+	</div>
+
+</body>
+</html>

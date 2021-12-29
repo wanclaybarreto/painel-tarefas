@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  th:with="roleName=${#authentication.principal.usuario.class.simpleName.toLowerCase}">
+<head>
+	<meta charset="utf-8" />
+	<meta lang="pt-br" />
+	<meta id="viewport" name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<title>WB Software</title>
+	<link rel="icon" type="image/png" th:href="@{/images/wb-logotipo.png}" />
+
+	<!-- FONTE UBUNTU: -->
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+	
+	<!-- CSS: -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+	<div class="container">
+		<nav>
+			<ul>
+				<li>
+					<a href="">
+						<span class="icon"> <img th:src="@{/images/wb-logotipo-white.png}" width="48" /> </span>
+						<span class="title"> <h2> SOFTWARE </h2> </span>
+					</a>						
+				</li>
+
+				<li>
+					<a th:href="@{/} + ${roleName} + '/painel-tarefas'" title="Painel de tarefas">
+						<span class="icon"> <img th:src="@{/icons/icon-painel-de-tarefas.png}" /> </span>
+						<span class="title"> Painel de tarefas </span>
+					</a>
+				</li>
+
+				<li>
+					<a th:href="@{/} + ${roleName} + '/tarefas/new'" title="Tarefas">
+						<span class="icon"> <img th:src="@{/icons/icon-tarefas.png}" /> </span>
+						<span class="title"> Tarefas </span>
+					</a>
+				</li>
+				
+				<li th:if="${roleName} == 'desenvolvedor' or ${roleName} == 'administrador'">
+					<a th:href="@{/} + ${roleName} + '/situacoes'" title="Situações">
+						<span class="icon"> <img th:src="@{/icons/icon-situacoes.png}" /> </span>
+						<span class="title"> Situações </span>
+					</a>
+				</li>
+				
+				<li th:if="${roleName} == 'desenvolvedor' or ${roleName} == 'administrador'">
+					<a th:href="@{/} + ${roleName} + '/modulos'" title="Módulos">
+						<span class="icon"> <img th:src="@{/icons/icon-modulos.png}" /> </span>
+						<span class="title"> Módulos </span>
+					</a>
+				</li>
+				
+				<li th:if="${roleName} == 'administrador'">
+					<a th:href="@{/} + ${roleName} + '/clientes'" title="Clientes">
+						<span class="icon"> <img th:src="@{/icons/icon-clientes.png}" /> </span>
+						<span class="title"> Clientes </span>
+					</a>
+				</li>
+				
+				<li th:if="${roleName} == 'administrador'">
+					<a th:href="@{/} + ${roleName} + '/administradores'" title="Administradores">
+						<span class="icon"> <img th:src="@{/icons/icon-administradores.png}" /> </span>
+						<span class="title"> Administradores </span>
+					</a>
+				</li>
+				
+				<li th:if="${roleName} == 'administrador'">
+					<a th:href="@{/} + ${roleName} + '/desenvolvedores'" title="Desenvolvedores">
+						<span class="icon"> <img th:src="@{/icons/icon-desenvolvedores.png}" /> </span>
+						<span class="title"> Desenvolvedores </span>
+					</a>
+				</li>
+				
+				<li th:if="${roleName} == 'desenvolvedor' or ${roleName} == 'administrador'">
+					<a th:href="@{/} + ${roleName} + '/tecnicos'" title="Tecnicos">
+						<span class="icon"> <img th:src="@{/icons/icon-tecnicos.png}" /> </span>
+						<span class="title"> Técnicos </span>
+					</a>
+				</li>
+				
+				<li>
+					<a th:href="@{/} + ${roleName} + '/relatorios'" title="Relatórios">
+						<span class="icon"> <img th:src="@{/icons/icon-relatorios.png}" /> </span>
+						<span class="title"> Relatórios </span>
+					</a>
+				</li>
+
+				<li>
+					<a th:href="@{/logout}" title="Sair">
+						<span class="icon"> <img th:src="@{/icons/icon-sair.png}" /> </span>
+						<span class="title"> Sair </span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="main">
+			<div class="topbar">
+				<div class="toggle">
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+				</div>
+				<div class="user" th:if="${#authentication.principal != 'anonymousUser'}">
+					<span th:text="${#authentication.principal.usuario.nome}"></span>
+				</div>
+			</div>
+			
+			<div layout:fragment="content"></div>
+			
+		</div>
+	</div>
+
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
